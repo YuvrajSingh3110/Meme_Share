@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import android.widget.ImageView
+import android.widget.ProgressBar
 import android.widget.Toast
 import com.android.volley.Request
 import com.android.volley.Response
@@ -26,10 +27,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun loadMeme() {
         // Instantiate the RequestQueue.
-        //val progressBar = findViewById<ProgressBar>(R.id.progressBar)
-       // progressBar.visibility = View.VISIBLE
+        val progressBar = findViewById<ProgressBar>(R.id.progressBar)
+        progressBar.visibility = View.VISIBLE
         val queue = Volley.newRequestQueue(this)
-        currentImageUrl = "https://meme-api.herokuapp.com/gimme"
+        currentImageUrl = "https://meme-api.com/gimme/memes"
 
         // Request a string response from the provided URL.
         val jsonObjectRequest = JsonObjectRequest(
@@ -37,6 +38,7 @@ class MainActivity : AppCompatActivity() {
             Response.Listener{ response ->
                 val currentImageUrl = response.getString("url")
                 val memeImage = findViewById<ImageView>(R.id.memeImage)
+                progressBar.visibility = View.INVISIBLE
                 Glide.with(this).load(currentImageUrl).into(memeImage)
             },
            Response.ErrorListener{
@@ -50,7 +52,7 @@ class MainActivity : AppCompatActivity() {
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "text/plain"
         intent.putExtra(Intent.EXTRA_TEXT, "Hey, check this out $currentImageUrl")
-        val chooser = Intent.createChooser(intent, "Share thi meme using...")
+        val chooser = Intent.createChooser(intent, "Share this meme using...")
         startActivity(chooser)
     }
 

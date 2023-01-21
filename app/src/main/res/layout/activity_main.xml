@@ -18,14 +18,15 @@
         app:layout_constraintVertical_bias="0.0"
         tools:srcCompat="@tools:sample/avatars" />
 
-<!--    <ProgressBar-->
-<!--        android:id="@+id/progressBar"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        app:layout_constraintTop_toTopOf="@id/memeImage"-->
-<!--        app:layout_constraintBottom_toBottomOf="@id/memeImage"-->
-<!--        app:layout_constraintLeft_toLeftOf="@id/memeImage"-->
-<!--        app:layout_constraintRight_toRightOf="@id/memeImage"/>-->
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="visible"
+        app:layout_constraintTop_toTopOf="@id/memeImage"
+        app:layout_constraintBottom_toBottomOf="@id/memeImage"
+        app:layout_constraintLeft_toLeftOf="@id/memeImage"
+        app:layout_constraintRight_toRightOf="@id/memeImage"/>
 
     <Button
         android:id="@+id/shareButton"
